@@ -1,2 +1,2 @@
-require("./main.css");
 require("./index.html");
+require("./main.css");

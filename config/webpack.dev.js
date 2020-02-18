@@ -16,19 +16,35 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(jpg|gif|png)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "images/[name].[ext]",
+              esModule: false
+            }
+          }
+        ]
+      },
+      {
         test: /\.html$/,
         use: [
           {
             loader: "file-loader",
             options: {
-              name: "[name].html"
+              name: "[name].html",
+              esModule: false
             }
           },
           {
             loader: "extract-loader"
           },
           {
-            loader: "html-loader"
+            loader: "html-loader",
+            options: {
+              attrs: ["img:src"]
+            }
           }
         ]
       },
