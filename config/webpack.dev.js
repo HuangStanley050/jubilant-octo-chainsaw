@@ -10,10 +10,28 @@ module.exports = {
     publicPath: "/"
   },
   devServer: {
-    contentBase: "dist"
+    contentBase: "dist",
+    overlay: true
   },
   module: {
     rules: [
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].html"
+            }
+          },
+          {
+            loader: "extract-loader"
+          },
+          {
+            loader: "html-loader"
+          }
+        ]
+      },
       {
         test: /\.css$/,
         use: [
